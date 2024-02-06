@@ -630,103 +630,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 });
 startGame();
 
-},{"./Country.js":"giaLO","./Game.js":"dSAJu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","lodash":"3qBDj"}],"giaLO":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-class Country {
-    constructor(countryData){
-        this.countryData = countryData;
-        this.correctAnswers = this.extractCorrectAnswers();
-    }
-    get flag() {
-        return this.countryData.flag;
-    }
-    extractCorrectAnswers() {
-        const translations = this.countryData.translations;
-        const correctAnswersArray = Object.values(translations).map((translation)=>translation.common.toLowerCase());
-        return new Set(correctAnswersArray);
-    }
-    checkAnswer(submittedAnswer) {
-        const normalizedSubmittedAnswer = submittedAnswer.toLowerCase();
-        return this.correctAnswers.has(normalizedSubmittedAnswer);
-    }
-    displayFlag() {
-        const flagElement = document.getElementById("flag");
-        const h1 = document.createElement("h1");
-        h1.textContent = this.flag;
-        flagElement.appendChild(h1);
-    }
-}
-exports.default = Country;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"dSAJu":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _countryJs = require("./Country.js");
-var _countryJsDefault = parcelHelpers.interopDefault(_countryJs);
-class Game {
-    #score;
-    #countries;
-    #countryIndex;
-    #currentCountry;
-    constructor(countries){
-        this.#score = 0;
-        this.#countries = countries;
-        this.#countryIndex = 0;
-        this.#currentCountry = new (0, _countryJsDefault.default)(this.#countries[this.#countryIndex]);
-        this.#currentCountry.displayFlag();
-    }
-    get score() {
-        return this.#score;
-    }
-    addPoint() {
-        this.#score++;
-    }
-    isGameFinished() {
-        return this.#countryIndex >= this.#countries.length;
-    }
-    nextCountry() {
-        if (this.isGameFinished()) return;
-        this.#countryIndex++;
-        if (!this.isGameFinished()) {
-            this.#currentCountry = new (0, _countryJsDefault.default)(this.#countries[this.#countryIndex]);
-            this.#currentCountry.displayFlag();
-        }
-    }
-}
-exports.default = Game;
-
-},{"./Country.js":"giaLO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3qBDj":[function(require,module,exports) {
+},{"lodash":"3qBDj","./Country.js":"giaLO","./Game.js":"dSAJu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3qBDj":[function(require,module,exports) {
 var global = arguments[3];
 (function() {
     /** Used as a safe reference for `undefined` in pre-ES5 environments. */ var undefined;
@@ -14958,6 +14862,102 @@ var global = arguments[3];
     root._ = _;
 }).call(this);
 
-},{}]},["hbj89","igcvL"], "igcvL", "parcelRequire7e89")
+},{}],"giaLO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class Country {
+    constructor(countryData){
+        this.countryData = countryData;
+        this.correctAnswers = this.extractCorrectAnswers();
+    }
+    get flag() {
+        return this.countryData.flag;
+    }
+    extractCorrectAnswers() {
+        const translations = this.countryData.translations;
+        const correctAnswersArray = Object.values(translations).map((translation)=>translation.common.toLowerCase());
+        return new Set(correctAnswersArray);
+    }
+    checkAnswer(submittedAnswer) {
+        const normalizedSubmittedAnswer = submittedAnswer.toLowerCase();
+        return this.correctAnswers.has(normalizedSubmittedAnswer);
+    }
+    displayFlag() {
+        const flagElement = document.getElementById("flag");
+        const h1 = document.createElement("h1");
+        h1.textContent = this.flag;
+        flagElement.appendChild(h1);
+    }
+}
+exports.default = Country;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"dSAJu":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _countryJs = require("./Country.js");
+var _countryJsDefault = parcelHelpers.interopDefault(_countryJs);
+class Game {
+    #score;
+    #countries;
+    #countryIndex;
+    #currentCountry;
+    constructor(countries){
+        this.#score = 0;
+        this.#countries = countries;
+        this.#countryIndex = 0;
+        this.#currentCountry = new (0, _countryJsDefault.default)(this.#countries[this.#countryIndex]);
+        this.#currentCountry.displayFlag();
+    }
+    get score() {
+        return this.#score;
+    }
+    addPoint() {
+        this.#score++;
+    }
+    isGameFinished() {
+        return this.#countryIndex >= this.#countries.length;
+    }
+    nextCountry() {
+        if (this.isGameFinished()) return;
+        this.#countryIndex++;
+        if (!this.isGameFinished()) {
+            this.#currentCountry = new (0, _countryJsDefault.default)(this.#countries[this.#countryIndex]);
+            this.#currentCountry.displayFlag();
+        }
+    }
+}
+exports.default = Game;
+
+},{"./Country.js":"giaLO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["hbj89","igcvL"], "igcvL", "parcelRequire7e89")
 
 //# sourceMappingURL=index.5baa4167.js.map

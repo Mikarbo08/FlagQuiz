@@ -1,3 +1,4 @@
+
 class Country {
     constructor(countryData) {
         this.countryData = countryData;
